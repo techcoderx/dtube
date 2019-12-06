@@ -15,8 +15,6 @@ Meteor.settings.public = {
       "https://api.steemit.com/",
       "https://steemd.minnowsupportproject.org/",
       "https://anyx.io/",
-      "https://rpc.steemviz.com/",
-      "https://rpc.usesteem.com/",
       "https://steemd.privex.io/",
       "https://api.steem.house/"
     ],
