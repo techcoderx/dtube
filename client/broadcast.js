@@ -131,14 +131,7 @@ broadcast = {
                 percent_steem_dollars: percent_steem_dollars,
                 allow_votes: true,
                 allow_curation_rewards: true,
-                extensions: [
-                  [0, {
-                    beneficiaries: [{
-                      account: Meteor.settings.public.beneficiary,
-                      weight: Session.get('remoteSettings').dfees
-                    }]
-                  }]
-                ]
+                extensions: []
               }]
             ];
             if (parentAuthor && parentPermlink) {

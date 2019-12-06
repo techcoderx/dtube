@@ -39,7 +39,7 @@ Template.player.reset = function(data) {
 
 Template.player.init = function(author, link) {
   $('.ui.embed.player').embed({
-    url: "https://emb.d.tube/#!/" + author + '/' + link
+    url: "https://emb.oneloved.tube/#!/" + author + '/' + link
     + "/true/true"
   });
 }
