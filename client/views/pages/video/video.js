@@ -195,13 +195,23 @@ Template.video.events({
     Session.set('replyingTo', replyingTo)
   },
   'click .submit': function (event) {
-    var body = $(event.currentTarget).prev().children()[0].value
-    var jsonMetadata = {
-      app: 'deadtube',
+    let body;
+    let commentbox = $(event.currentTarget).prev().children()
+    for (let i = 0; i < commentbox.length; i++) {
+      if (commentbox[i].type === "textarea") {
+        body = commentbox[i].value
+      }
+    }
+    console.log($(event.currentTarget).prev().children())
+    console.log(body)
+    let jsonMetadata = {
+      app: 'dtube/0.9',
       description: body,
       title: ''
     }
     refs = []
+    console.log("replyingTo",Session.get('replyingTo'))
+    console.log("currentRefs",Session.get('currentRefs'))
     if (!Session.get('replyingTo')) {
       refs = Session.get('currentRefs')
     } else {
@@ -210,11 +220,12 @@ Template.video.events({
       refs.push(Session.get('replyingTo').id)
     }
     if (refs.length == 0) {
-      return
+      return toastr.error("Comment error: Could not obtain post to reply to") // translate this
     } else {
       $('.ui.button > .ui.icon.talk.repl').addClass('dsp-non');
       $('.ui.button > .ui.icon.load.repl').removeClass('dsp-non');
     }
+    console.log(refs)
     if (refs.length > 1) {
       for (let i = 0; i < refs.length; i++) {
         const ref = refs[i];
